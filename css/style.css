@@ -1,244 +1,284 @@
-/* Add your css styles here. Plagiarism is NOT tolerated!*/
+/* ========================================
+   Base Reset & Typography
+======================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-button:focus,
-button:active {
-  outline: 0;
-}
-
 body {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  color: #383838;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  line-height: 1.6;
+  padding-bottom: 80px; /* for fixed add button spacing */
 }
 
+/* ========================================
+   Navbar Styles
+======================================== */
+.navbar {
+  background-color: #4a90e2;
+  color: #fff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-arrow-back {
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.navbar-title h2 {
+  font-size: 1.5rem;
+}
+
+/* ========================================
+   Main Content & Section Styling
+======================================== */
 main {
-  margin-top: 60px;
+  padding: 2rem;
 }
 
-.notification {
-  position: absolute;
-  bottom: 0;
-  left: 40px;
-  background: #515151;
-  color: #eee;
-  padding: 20px 40px;
-  border-radius: 5px;
-  opacity: 0;
-  z-index: 10;
+/* Centered container for content */
+.centered-container {
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 1rem;
 }
 
-.notification-animation {
-  animation-name: notify;
-  animation-duration: 2.5s;
+/* Headings for sections */
+.centered-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #4a90e2;
 }
 
-@keyframes notify {
+/* ========================================
+   Task List Styles
+======================================== */
+#task-list {
+  list-style: none;
+  margin-top: 1rem;
+  padding: 0;
+}
+
+#task-list li {
+  background: #fff;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Message when no tasks exist */
+.no-task-message {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+}
+
+/* ========================================
+   Floating Add Button
+======================================== */
+.button-add {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+.button-add:hover {
+  background-color: #357ab7;
+  transform: scale(1.05);
+}
+
+/* Expand Animation */
+.animation-expand {
+  animation: expand 0.3s ease-in-out;
+}
+
+@keyframes expand {
   from {
-    bottom: 0;
+    transform: scale(0.8);
     opacity: 0;
   }
   to {
-    bottom: 40px;
+    transform: scale(1);
     opacity: 1;
   }
 }
 
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background: #33cccc;
-}
-
-.navbar-container {
-  text-align: center;
-  margin-top: 15px;
-  color: #fff;
-}
-
-.navbar-arrow-back {
-  width: 10%;
-  float: left;
-  font-size: 40px;
-  line-height: 20px;
-  cursor: pointer;
-  visibility: hidden;
-}
-
-.navbar-title {
-  width: 90%;
-}
-
-.section-view,
+/* ========================================
+   Section: Add/Edit Task
+======================================== */
 .section-add-edit {
-  padding-top: 50px;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 2rem;
+  margin: 2rem auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
 }
 
-.section-add-edit {
-  display: none;
+.section-add-edit h2 {
+  margin-bottom: 1.5rem;
+  color: #4a90e2;
 }
 
-.centered-title {
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-}
-
-.centered-container {
-  width: 50%;
-  margin: 0 auto;
-  padding: 20px 30px;
-}
-
-.no-task-message {
-  text-align: center;
-  display: none;
-}
-
-.task {
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.task-item {
-  list-style: none;
-}
-
-.task-item:not(:last-child) {
-  margin-bottom: 10px;
-}
-
-.animation-expand:hover {
-  transform: scale(1.03);
-}
-
-.task-priority-high {
-  background-color: #ff0000;
-  color: #fff;
-}
-
-.task-priority-moderate {
-  background-color: #0066ff;
-  color: #fff;
-}
-
-.task-priority-low {
-  background-color: #33cc33;
-  color: #fff;
-}
-
-.task > div:not(:last-child) {
-  margin-bottom: 5px;
-}
-
-.button-add {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 80px;
-  height: 80px;
-  font-size: 50px;
-  border: none;
-  background: #33cccc;
-  color: #fff;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.2s;
+/* ========================================
+   Form Styles
+======================================== */
+form {
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
 .form-label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
   display: block;
-  margin-bottom: 5px;
 }
 
-.input-text {
-  display: block;
-  width: 60%;
-  height: 30px;
-  padding-left: 5px;
-  border-radius: 3px;
-  border: 1px solid #b4b4b4;
+.input-text,
+.input-textarea,
+.select-date {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.input-text:focus,
+.input-textarea:focus,
+.select-date:focus {
+  border-color: #4a90e2;
+  outline: none;
 }
 
 .input-textarea {
-  width: 100%;
-  height: 40%;
+  min-height: 100px;
+  resize: vertical;
 }
 
-.select-date {
-  display: inline-block;
-  width: 10%;
-}
-
-.select-month {
-  width: 20%;
-}
-
+/* Error Messages */
 .input-error {
-  display: none;
-  margin-top: 5px;
-  font-size: 13px;
-  color: red;
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  display: none; /* Display this dynamically as needed */
 }
 
+/* ========================================
+   Button Groups & Buttons
+======================================== */
 .button-group {
-  text-align: center;
-}
-
-.confirmation-delete {
-  display: none;
-  background: #facece;
-  padding: 10px 0;
-}
-
-.confirmation-delete-message {
-  font-weight: 800;
-  font-size: 20px;
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .button {
-  padding: 10px 20px;
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 5px;
-  color: #fff;
+  border-radius: 4px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background-color 0.3s ease;
 }
 
+/* CRUD Buttons */
 .button-create {
-  background: #33cc33;
+  background-color: #4a90e2;
+  color: #fff;
 }
 
 .button-create:hover {
-  background: #70db70;
+  background-color: #357ab7;
 }
 
 .button-save {
-  background: #0080ff;
+  background-color: #27ae60;
+  color: #fff;
 }
 
 .button-save:hover {
-  background: #3399ff;
+  background-color: #1e8449;
 }
 
 .button-delete {
-  background: #ff0000;
+  background-color: #e74c3c;
+  color: #fff;
 }
 
 .button-delete:hover {
-  background: #ff3333;
+  background-color: #c0392b;
+}
+
+/* Confirmation Delete Styles */
+.confirmation-delete {
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #e74c3c;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+.confirmation-delete-message {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+/* ========================================
+   Responsive Design
+======================================== */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-arrow-back {
+    margin-bottom: 0.5rem;
+  }
+
+  .button-add {
+    bottom: 1rem;
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .section-add-edit,
+  .centered-container {
+    padding: 1rem;
+    margin: 1rem;
+  }
 }

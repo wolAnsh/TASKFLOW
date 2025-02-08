@@ -1,5 +1,3 @@
-// Add your javascript here. Plagiarism is NOT tolerated!
-// ###### Event Listeners #####
 $("#button-add").on("click", () => {
   enableFormCreateMode();
   clearForm();
@@ -303,11 +301,6 @@ function loadYearOptions(currentYear) {
   }
 }
 
-// ###### Functions #####
-
-// ###### Main #####
-
 updateView();
 loadDataSelect();
 
-// ###### Main #####
